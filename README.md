@@ -30,9 +30,12 @@
 
 ![image](https://user-images.githubusercontent.com/8293321/227775051-440d4ed5-f30e-4ec5-bf1d-10310840ab54.png)
 
+## Mention:
+This tool forks from [aix](https://github.com/projectdiscovery/aix), and I do a little modification for my personal usage.
+
 ## Features
 - **AMA with AI** over **CLI**
-- **Query LLM APIs** (OpenAI)
+- **Query LLM APIs** (OpenAI,Gemini)
 - Supports **GPT-3.5 and GPT-4.0** models
 - Configurable with OpenAI API key
 - Flexible output options
@@ -42,15 +45,21 @@ To install aix, you need to have Golang 1.19 installed on your system. You can d
 
 
 ```bash
-go install github.com/projectdiscovery/aix/cmd/aix@latest
+go install github.com/N0el4kLs/aix/cmd/aix@latest
 ```
 
 ## Prerequisite
 
 > **Note**: Before using aix, make sure to set your [OpenAI API key](https://platform.openai.com/account/api-keys) as an environment variable `OPENAI_API_KEY`.
+> 
+> Now support gemini api, make sure to set your [Gemini Api Key](https://ai.google.dev/)
 
 ```bash
 export OPENAI_API_KEY=******
+export Gemini_API_KEY=******
+
+# you can also set Gemini_PROXY to enable proxy for gemini api
+export Gemini_PROXY=http://127.0.0.1:7790
 ````
 
 ## Help Menu
@@ -65,6 +74,7 @@ Usage:
 Flags:
 INPUT:
    -p, -prompt string[]  prompt to query (input: stdin,string,file)
+   -llm string           llm source (openai,gemini) (default "gemini")
 
 MODEL:
    -g3, -gpt3         use GPT-3.5 model (default true)
@@ -78,10 +88,6 @@ CONFIG:
    -tp, -topp string              openai model top-p
    -sc, -system-context string[]  system message to send to the model (optional) (string,file)
    -s, -stream                    stream output to stdout (markdown rendering will be disabled)
-
-UPDATE:
-   -up, -update                 update aix to latest version
-   -duc, -disable-update-check  disable automatic aix update check
 
 OUTPUT:
    -o, -output string  file to write output to
