@@ -30,6 +30,7 @@ var (
 
 // Options contains the configuration options for tuning the enumeration process.
 type Options struct {
+	LLMSource          string              `yaml:"llm_source"`
 	OpenaiApiKey       string              `yaml:"openai_api_key"`
 	Prompt             string              `yaml:"prompt"`
 	Gpt3               bool                `yaml:"gpt3"`
@@ -65,6 +66,7 @@ func ParseOptions() *Options {
 
 	flagSet.CreateGroup("input", "Input",
 		flagSet.StringSliceVarP(&promptArray, "prompt", "p", nil, "prompt to query (input: stdin,string,file)", goflags.FileCommaSeparatedStringSliceOptions),
+		flagSet.StringVar(&options.LLMSource, "llm", GEMINI, "llm source (openai,gemini)"),
 	)
 
 	flagSet.CreateGroup("model", "Model",
@@ -82,10 +84,10 @@ func ParseOptions() *Options {
 		flagSet.BoolVarP(&options.Stream, "stream", "s", false, "stream output to stdout (markdown rendering will be disabled)"),
 	)
 
-	flagSet.CreateGroup("update", "Update",
-		flagSet.BoolVarP(&options.Update, "update", "up", false, "update aix to latest version"),
-		flagSet.BoolVarP(&options.DisableUpdateCheck, "disable-update-check", "duc", false, "disable automatic aix update check"),
-	)
+	//flagSet.CreateGroup("update", "Update",
+	//	flagSet.BoolVarP(&options.Update, "update", "up", false, "update aix to latest version"),
+	//	flagSet.BoolVarP(&options.DisableUpdateCheck, "disable-update-check", "duc", false, "disable automatic aix update check"),
+	//)
 
 	flagSet.CreateGroup("output", "Output",
 		flagSet.StringVarP(&options.Output, "output", "o", "", "file to write output to"),
@@ -99,6 +101,15 @@ func ParseOptions() *Options {
 
 	if err := flagSet.Parse(); err != nil {
 		gologger.Fatal().Msgf("%s\n", err)
+	}
+
+	llmSource := strings.ToLower(options.LLMSource)
+	if strings.Contains(llmSource, "openai") {
+		options.LLMSource = OPENAI
+	} else if strings.Contains(llmSource, "gemini") {
+		options.LLMSource = GEMINI
+	} else {
+		gologger.Fatal().Msgf("Invalid LLM source: %s\n", options.LLMSource)
 	}
 
 	// Join prompt array into a single string
