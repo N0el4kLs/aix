@@ -1,7 +1,7 @@
 package source
 
 import (
-	"github.com/projectdiscovery/aix/internal"
+	"github.com/N0el4kLs/aix/internal"
 )
 
 const (

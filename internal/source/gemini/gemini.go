@@ -13,8 +13,8 @@ import (
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 
+	"github.com/N0el4kLs/aix/internal"
 	"github.com/google/generative-ai-go/genai"
-	"github.com/projectdiscovery/aix/internal"
 )
 
 const ChatMessageRoleSystem = "system"

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/projectdiscovery/aix/internal"
+	"github.com/N0el4kLs/aix/internal"
 	"github.com/sashabaranov/go-openai"
 )
 
