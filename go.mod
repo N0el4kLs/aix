@@ -2,8 +2,6 @@ module github.com/projectdiscovery/aix
 
 go 1.21
 
-toolchain go1.22.5
-
 require (
 	github.com/charmbracelet/glamour v0.6.0
 	github.com/google/generative-ai-go v0.17.0

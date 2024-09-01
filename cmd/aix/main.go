@@ -9,12 +9,13 @@ import (
 
 	"github.com/charmbracelet/glamour"
 	"github.com/logrusorgru/aurora"
+	"github.com/projectdiscovery/aix/internal"
 	"github.com/projectdiscovery/aix/internal/runner"
 	"github.com/projectdiscovery/gologger"
 )
 
 func main() {
-	options := runner.ParseOptions()
+	options := internal.ParseOptions()
 	if options.Stream && options.Jsonl {
 		// cannot stream jsonl
 		gologger.Fatal().Msgf("Cannot use --stream and --jsonl together")

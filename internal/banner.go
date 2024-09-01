@@ -1,11 +1,11 @@
-package runner
+package internal
 
 import (
 	"github.com/projectdiscovery/gologger"
 	updateutils "github.com/projectdiscovery/utils/update"
 )
 
-const version = "v0.0.5"
+const version = "v0.0.6"
 
 var banner = (`
    ___   _____  __
