@@ -1,4 +1,4 @@
-package runner
+package internal
 
 import (
 	"io"
@@ -66,7 +66,7 @@ func ParseOptions() *Options {
 
 	flagSet.CreateGroup("input", "Input",
 		flagSet.StringSliceVarP(&promptArray, "prompt", "p", nil, "prompt to query (input: stdin,string,file)", goflags.FileCommaSeparatedStringSliceOptions),
-		flagSet.StringVar(&options.LLMSource, "llm", GEMINI, "llm source (openai,gemini)"),
+		flagSet.StringVar(&options.LLMSource, "llm", "gemini", "llm source (openai,gemini)"),
 	)
 
 	flagSet.CreateGroup("model", "Model",
@@ -105,9 +105,9 @@ func ParseOptions() *Options {
 
 	llmSource := strings.ToLower(options.LLMSource)
 	if strings.Contains(llmSource, "openai") {
-		options.LLMSource = OPENAI
+		options.LLMSource = "openai"
 	} else if strings.Contains(llmSource, "gemini") {
-		options.LLMSource = GEMINI
+		options.LLMSource = "gemini"
 	} else {
 		gologger.Fatal().Msgf("Invalid LLM source: %s\n", options.LLMSource)
 	}
