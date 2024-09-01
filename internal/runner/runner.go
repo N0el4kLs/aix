@@ -1,10 +1,10 @@
 package runner
 
 import (
-	"github.com/projectdiscovery/aix/internal"
-	"github.com/projectdiscovery/aix/internal/source"
-	"github.com/projectdiscovery/aix/internal/source/gemini"
-	"github.com/projectdiscovery/aix/internal/source/openai"
+	"github.com/N0el4kLs/aix/internal"
+	"github.com/N0el4kLs/aix/internal/source"
+	"github.com/N0el4kLs/aix/internal/source/gemini"
+	"github.com/N0el4kLs/aix/internal/source/openai"
 	errorutil "github.com/projectdiscovery/utils/errors"
 )
 

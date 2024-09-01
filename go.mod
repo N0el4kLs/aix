@@ -1,4 +1,4 @@
-module github.com/projectdiscovery/aix
+module github.com/N0el4kLs/aix
 
 go 1.21
 

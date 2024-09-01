@@ -7,10 +7,10 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/N0el4kLs/aix/internal"
+	"github.com/N0el4kLs/aix/internal/runner"
 	"github.com/charmbracelet/glamour"
 	"github.com/logrusorgru/aurora"
-	"github.com/projectdiscovery/aix/internal"
-	"github.com/projectdiscovery/aix/internal/runner"
 	"github.com/projectdiscovery/gologger"
 )
 
