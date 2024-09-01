@@ -3,12 +3,13 @@ package main
 import (
 	"fmt"
 
+	"github.com/projectdiscovery/aix/internal"
 	"github.com/projectdiscovery/aix/internal/runner"
 	"github.com/projectdiscovery/gologger"
 )
 
 func main() {
-	options := &runner.Options{
+	options := &internal.Options{
 		OpenaiApiKey:       "API-KEY",
 		Prompt:             "what is the capital of france?",
 		Gpt3:               true,
